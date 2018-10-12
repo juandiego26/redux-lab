@@ -1,0 +1,13 @@
+.Categories {
+  margin-left: 300px;
+  background-color: #FFF;
+  overflow: hidden;
+  width: Calc(100vw - 300px);
+  flex-direction: column;
+}
+.Categories-header {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

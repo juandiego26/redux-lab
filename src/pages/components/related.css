@@ -1,0 +1,38 @@
+.Related {
+  position: fixed;
+  width: 300px;
+  display: flex;
+  left: 0;
+  top: 0;
+  flex-direction: column;
+  background-color: #171B2F;
+  max-height: 100vh;
+  height: inherit;
+}
+
+.Related-logo {
+  margin: 1rem 0 0 5px;
+  width: 250px;
+  height: 75px;
+}
+
+
+/* .Related {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  width: 300px;
+  max-height: 100vh;
+  height: inherit;
+  background-color: #171B2F;
+}
+.Related-logo {
+  margin: 1rem 0 0 5px;
+  width: 260px;
+  height: 75px;
+} */
+
+
+
