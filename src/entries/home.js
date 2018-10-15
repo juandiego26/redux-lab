@@ -18,7 +18,7 @@ import reducer from '../reducers/data'
 
 // creamos nuestro store
 const store = createStore(
-  (state) => state,
+  reducer,
   initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )

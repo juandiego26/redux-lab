@@ -3,7 +3,6 @@ function data( state, action ){
     case 'SEARCH_VIDEO': {
         return state
       }
-      break;
     default:
       return state
   }
