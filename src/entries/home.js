@@ -1,17 +1,21 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Home from '../pages/containers/home'
-// import Playlist from '../playlist/components/playlist'
 import data from '../data/api.json'
 import extras	from '../data/api-extra.json'
+// redux
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import reducer from '../reducers/data'
+
+
+
 // estado inicial de los datos del api y se define el modelo como se va a consumir
   const initialState = {
-    data: {
-      ...data
-    }
+    data,
+    extras
   }
+
 // creamos nuestro store
 const store = createStore(
   (state) => state,
@@ -29,7 +33,7 @@ const homeContainer = document.getElementById('home-container');
 
 render  (
   <Provider store={store}>
-    <p>Hola mundo</p>
+    <Home />
   </Provider>,
-    homeContainer
+  homeContainer
 );
