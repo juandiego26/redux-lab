@@ -13,7 +13,8 @@ import reducer from '../reducers/data'
 // estado inicial de los datos del api y se define el modelo como se va a consumir
   const initialState = {
     data,
-    extras
+    extras,
+    search: []
   }
 
 // creamos nuestro store
