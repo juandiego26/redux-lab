@@ -4,6 +4,7 @@ import './categories.css'
 import Search from '../../widgets/containers/search'
 import UserInfo from '../../widgets/components/user-info'
 import Media from '../../playlist/components/media'
+import '../../playlist/components/media.css'
 
 
 function Categories(props) {
@@ -13,9 +14,22 @@ function Categories(props) {
         <Search />
         <UserInfo {...props.myUserInfo}/>
       </div>
+      {
+          props.search.length > 0 && (
+            <div className  = "Category-results">
+              <h3 className = "Category-description">Resultados de la búsqueda</h3>
+              <h1 className = "Category-title">{props.search.length} coincidencia(s)</h1>
+            </div>
+          )
+        }
         {
-          props.search.map((item) => {
-            return <Media {...item} key={item.id} />
+          props.search.map( item => {
+            return <Media
+              {...item}
+              className = "Media-resultados"
+              key={item.id}
+              openModal={props.handleOpenModal}
+            />
           })
         }
       {

@@ -9,7 +9,6 @@ class MediaContainer extends Component {
   render(){
     return (
       <Media
-        { ...this.props.data.toJS() }
         className = {this.props.className}
         openModal = {this.openModal}
         openModalBlur = {this.props.openModalBlur}
