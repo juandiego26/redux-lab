@@ -40,6 +40,7 @@ class Home extends Component {
             categories={this.props.categories}
             myUserInfo={this.props.extras.myUserInfo}
             handleOpenModal={this.handleOpenModal}
+            search={this.props.search}
           />
           {
             this.state.modalVisible && // operador ternario para ver si se rederiza el modal
@@ -64,7 +65,8 @@ class Home extends Component {
 function mapStateToProps(state, props) {
   return {
     categories: state.data.categories,
-    extras: state.extras
+    extras: state.extras,
+    search: state.search
   }
 }
 
