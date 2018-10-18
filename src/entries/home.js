@@ -6,27 +6,31 @@ import extras	from '../data/api-extra.json'
 // redux
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from '../reducers/data'
-import data from '../schemas/index'
+import reducer from '../reducers/index'
+// import data from '../schemas/index'
 
 // console.log(normalizedData)
 // console.log(data)
 
 // estado inicial de los datos del api y se define el modelo como se va a consumir
-  const initialState = {
-    data: {
-      // ...data
-      entities: data.entities,
-      categories: data.result.categories
-    },
-    extras,
-    search: []
-  }
+  // const initialState = {
+  //   data: {
+  //     // ...data
+  //     entities: data.entities,
+  //     categories: data.result.categories,
+  //     search: [],
+  //   },
+  //   extras,
+  //   modal: {
+  //     visibility: false,
+  //     mediaId: null
+  //   }
+  // }
 
 // creamos nuestro store
 const store = createStore(
   reducer,
-  initialState,
+  {},
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

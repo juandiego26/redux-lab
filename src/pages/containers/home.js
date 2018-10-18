@@ -68,8 +68,8 @@ function mapStateToProps(state, props) {
   })
   return {
     categories: categories, // === categories solo ES6: Enhanced Object Properties
-    extras: state.extras,
-    search: state.search
+    extras: state.data.extras,
+    search: state.data.search
   }
 }
 
