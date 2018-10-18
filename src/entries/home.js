@@ -1,19 +1,23 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Home from '../pages/containers/home'
-import data from '../data/api.json'
+// import data from '../data/api.json'
 import extras	from '../data/api-extra.json'
 // redux
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from '../reducers/data'
+import data from '../schemas/index'
 
-
+// console.log(normalizedData)
+// console.log(data)
 
 // estado inicial de los datos del api y se define el modelo como se va a consumir
   const initialState = {
     data: {
-      ...data
+      // ...data
+      entities: data.entities,
+      categories: data.result.categories
     },
     extras,
     search: []
@@ -26,7 +30,7 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-console.log(store.getState())
+// console.log(store.getState())
 
 //Referencia por id en el index.html
 const homeContainer = document.getElementById('home-container');
