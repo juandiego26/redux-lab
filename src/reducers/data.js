@@ -12,29 +12,8 @@ const initialState = fromJS({
 function data( state = initialState, action ){
   switch ( action.type ) {
     case 'SEARCH_VIDEO': {
-      return state.set( 'search', action.payload.query )
-      // let results = []
-      // // if (action.payload.query) {
-      // //   const categories = state.data.categories
-      // //   categories.map(categoty => {
-      // //     let tempResults = categoty.playlist.filter(item => {
-      // //       return item.author.toLowerCase().includes(action.payload.query.toLowerCase())
-      // //     })
-      // //     results = results.concat(tempResults)
-      // //   })
-      // // }
-      // if (action.payload.query) {
-      //   state.data.categories.map((category) => {
-      //     return category.playlist.filter((item) => {
-      //       return item.author.toLowerCase().includes(action.payload.query.toLowerCase()) && results.push(item)
-      //     })
-      //   })
-      // }
-      //   return {
-      //     ...state,
-      //     search: results
-      //   }
-      }
+      return state.set('search', action.payload.query) //state es inmutable
+    }
     default:
       return state
   }

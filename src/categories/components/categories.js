@@ -23,11 +23,15 @@ function Categories(props) {
           )
         }
         {
-          props.search.map( mediaId => {
+          props.search.map( item => {
             return <Media
               className = "Media-resultados"
-              key = {mediaId}
-              id = {mediaId}
+              key = {item.get('id')}
+              id  = {item.get('id')}
+              title = {item.get('title')}
+              cover = {item.get('cover')}
+              author = {item.get('author')}
+              src = {item.get('src')}
               openModal={props.handleOpenModal}
             />
           })

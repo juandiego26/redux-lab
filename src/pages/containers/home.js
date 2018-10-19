@@ -8,25 +8,34 @@ import HandleError from '../../error/containers/handle-error'
 import VideoPlayer from '../../player/containers/video-player'
 // redux
 import { connect } from 'react-redux'
-import { List as list} from 'immutable'
+import { List as list} from 'immutable' // alias para importarlo como una función para que no parezca una clase
 
 class Home extends Component {
 
-  state = {
-    modalVisible: false, // inicamos el estado del modal para que se muestre al inicio
-  }
+  // state = {
+  //   modalVisible: false, // inicamos el estado del modal para que se muestre al inicio
+  // }
 
-  handleOpenModal = (media) => {
-    this.setState({
-      modalVisible: true,
-      media // --Equivale media: media
+  handleOpenModal = (id) => {
+    this.props.dispatch({
+      type: 'OPEN_MODAL',
+      payload: {
+        mediaId: id
+      }
     })
+    // this.setState({
+    //   modalVisible: true,
+    //   media // --Equivale media: media
+    // })
   }
 
   handleCloseModal = (event) => {
-    this.setState({
-      modalVisible: false // seteamos el estado del modal
+    this.props.dispatch({
+      type: 'CLOSE_MODAL'
     })
+    // this.setState({
+    //   modalVisible: false // seteamos el estado del modal
+    // })
   }
 
   render() {
@@ -44,15 +53,16 @@ class Home extends Component {
             search={this.props.search}
           />
           {
-            this.state.modalVisible && // operador ternario para ver si se rederiza el modal
+            this.props.modal.get('visibility') && // operador ternario para ver si se rederiza el modal
             <ModalContainer>
               <Modal
                 handleClick={this.handleCloseModal}
               >
                 <VideoPlayer
                   autoplay
-                  src={this.state.media.src}
-                  title={this.state.media.title}
+                  mediaId = {this.props.modal.get('mediaId')}
+                  // src={this.state.media.src}
+                  // title={this.state.media.title}
                 />
               </Modal>
             </ModalContainer>
@@ -71,17 +81,20 @@ function mapStateToProps(state, props) {
     return state.getIn(['data','entities','categories',categoryId])
   })
 
-  let searchResult = list()
+  let searchResults = list()
   const search = state.getIn(['data', 'search'])
   if (search) {
     const mediaList = state.getIn(['data', 'entities', 'media'])
-    searchResult = mediaList.filter((item) => (item.get('author').toLowerCase().includes(search.toLowerCase()))).toList()
+    searchResults = mediaList.filter((item) =>
+      (item.get('author').toLowerCase().includes(search.toLowerCase())
+    )).toList()
   }
 
   return {
     categories: categories, // === categories solo ES6: Enhanced Object Properties
     extras: state.getIn(['data','extras']),
-    search: searchResult.toJS()
+    search: searchResults,
+    modal: state.get('modal')
   }
 }
 
