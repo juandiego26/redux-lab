@@ -9,6 +9,7 @@ import VideoPlayer from '../../player/containers/video-player'
 // redux
 import { connect } from 'react-redux'
 import { List as list} from 'immutable' // alias para importarlo como una función para que no parezca una clase
+import { openModal, closeModal } from '../../actions/index'
 
 class Home extends Component {
 
@@ -17,12 +18,13 @@ class Home extends Component {
   // }
 
   handleOpenModal = (id) => {
-    this.props.dispatch({
-      type: 'OPEN_MODAL',
-      payload: {
-        mediaId: id
-      }
-    })
+    this.props.dispatch(openModal(id))
+    //   {
+    //   type: 'OPEN_MODAL',
+    //   payload: {
+    //     mediaId: id
+    //   }
+    // })
     // this.setState({
     //   modalVisible: true,
     //   media // --Equivale media: media
@@ -30,10 +32,11 @@ class Home extends Component {
   }
 
   handleCloseModal = (event) => {
-    this.props.dispatch({
-      type: 'CLOSE_MODAL'
-    })
-    // this.setState({
+    this.props.dispatch(closeModal())
+    // ({
+    //   type: 'CLOSE_MODAL'
+    // })
+    // // this.setState({
     //   modalVisible: false // seteamos el estado del modal
     // })
   }
