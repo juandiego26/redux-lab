@@ -12,7 +12,7 @@ function Categories(props) {
     <div className="Categories">
       <div className="Categories-header">
         <Search />
-        <UserInfo {...props.myUserInfo}/>
+        <UserInfo {...props.myUserInfo.toJS()}/>
       </div>
       {
           props.search.length > 0 && (
@@ -23,21 +23,21 @@ function Categories(props) {
           )
         }
         {
-          props.search.map( item => {
+          props.search.map( mediaId => {
             return <Media
-              {...item}
               className = "Media-resultados"
-              key={item.id}
+              key = {mediaId}
+              id = {mediaId}
               openModal={props.handleOpenModal}
             />
           })
         }
       {
-        props.categories.map((item) => {
+        props.categories.map((category) => {
           return (
             <Category
-              key={item.id}
-              {...item}
+              key={category.get('id')}
+              {...category.toJS()}
               handleOpenModal={props.handleOpenModal}
             />
           )

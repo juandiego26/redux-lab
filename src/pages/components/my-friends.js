@@ -8,8 +8,8 @@ const MyFriends = props => (
     {
       props.data.map(item => (
         <Friend
-          key={item.id}
-          {...item}
+          key={item.get('id')}
+          {...item.toJS()}
         />
         )
       )
