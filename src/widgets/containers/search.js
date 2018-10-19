@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Search from '../components/search'
 import { connect } from 'react-redux'
-import { searchEntities } from '../../actions/index'
+// import { searchEntities } from '../../actions/index'
+import * as actions from '../../actions/index'
+import { bindActionCreators } from 'redux';
 
 class SearchContainer extends Component {
 
@@ -13,7 +15,7 @@ class SearchContainer extends Component {
     event.preventDefault()
     // console.log(this.input.value, 'submit')
     // acción que se envía a redux
-    this.props.dispatch(searchEntities(this.input.value))
+    this.props.actions.searchEntities(this.input.value)
     // ({
     //   type: 'SEARCH_ENTITIES',
     //   payload: {
@@ -44,4 +46,10 @@ class SearchContainer extends Component {
   }
 }
 
-export default connect()(SearchContainer)
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SearchContainer)

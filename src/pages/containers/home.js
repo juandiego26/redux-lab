@@ -9,7 +9,9 @@ import VideoPlayer from '../../player/containers/video-player'
 // redux
 import { connect } from 'react-redux'
 import { List as list} from 'immutable' // alias para importarlo como una función para que no parezca una clase
-import { openModal, closeModal } from '../../actions/index'
+// import { openModal, closeModal } from '../../actions/index'
+import * as actions from '../../actions/index' // con este comodin (*) traemos todo
+import { bindActionCreators } from 'redux'
 
 class Home extends Component {
 
@@ -18,7 +20,7 @@ class Home extends Component {
   // }
 
   handleOpenModal = (id) => {
-    this.props.dispatch(openModal(id))
+    this.props.actions.openModal(id)
     //   {
     //   type: 'OPEN_MODAL',
     //   payload: {
@@ -32,7 +34,7 @@ class Home extends Component {
   }
 
   handleCloseModal = (event) => {
-    this.props.dispatch(closeModal())
+    this.props.actions.closeModal()
     // ({
     //   type: 'CLOSE_MODAL'
     // })
@@ -101,4 +103,11 @@ function mapStateToProps(state, props) {
   }
 }
 
-export default connect(mapStateToProps)(Home)
+function mapDispatchToProps(dispatch) {
+  return {
+    // actions: bindActionCreators(acciones, dispatch)
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
