@@ -9,9 +9,9 @@ import VideoPlayer from '../../player/containers/video-player'
 // redux
 import { connect } from 'react-redux'
 import { List as list} from 'immutable' // alias para importarlo como una función para que no parezca una clase
-// import { openModal, closeModal } from '../../actions/index'
-import * as actions from '../../actions/index' // con este comodin (*) traemos todo
-import { bindActionCreators } from 'redux'
+import { openModal, closeModal } from '../../actions/index'
+// import * as actions from '../../actions/index' // con este comodin (*) traemos todo
+// import { bindActionCreators } from 'redux'
 
 class Home extends Component {
 
@@ -20,7 +20,7 @@ class Home extends Component {
   // }
 
   handleOpenModal = (id) => {
-    this.props.actions.openModal(id)
+    this.props.openModal(id)
     //   {
     //   type: 'OPEN_MODAL',
     //   payload: {
@@ -34,7 +34,7 @@ class Home extends Component {
   }
 
   handleCloseModal = (event) => {
-    this.props.actions.closeModal()
+    this.props.closeModal()
     // ({
     //   type: 'CLOSE_MODAL'
     // })
@@ -103,11 +103,16 @@ function mapStateToProps(state, props) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    // actions: bindActionCreators(acciones, dispatch)
-    actions: bindActionCreators(actions, dispatch)
-  }
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     // actions: bindActionCreators(acciones, dispatch)
+//     actions: bindActionCreators(actions, dispatch)
+//   }
+// }
+
+const mapDispatchToProps = { // --- es una forma simplificada que remplaza el uso de bindActionCreators de Redux!
+  closeModal,
+  openModal
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
