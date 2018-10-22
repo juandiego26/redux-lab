@@ -7,6 +7,7 @@ import reducer from '../reducers/index'
 import { Map as map } from 'immutable' // --- se le coloca un alias en minusculas para verlo como funcion no como clase
 import logger from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
 
 // //--middleware ES5 --
 // function logger({ getState, dispatch }) {
@@ -38,7 +39,7 @@ const store = createStore(
   composeWithDevTools(
     applyMiddleware(
       logger,
-      _logger
+      thunk
     )
   )
 )

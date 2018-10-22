@@ -56,6 +56,7 @@ class Home extends Component {
             myUserInfo={this.props.extras.get('myUserInfo')}
             handleOpenModal={this.handleOpenModal}
             search={this.props.search}
+            isLoading={this.props.isLoading}
           />
           {
             this.props.modal.get('visibility') && // operador ternario para ver si se rederiza el modal
@@ -99,7 +100,8 @@ function mapStateToProps(state, props) {
     categories: categories, // === categories solo ES6: Enhanced Object Properties
     extras: state.getIn(['data','extras']),
     search: searchResults,
-    modal: state.get('modal')
+    modal: state.get('modal'),
+    isLoading: state.get('isLoading').get('active')
   }
 }
 

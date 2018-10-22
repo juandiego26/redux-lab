@@ -14,6 +14,7 @@ function Categories(props) {
         <Search />
         <UserInfo {...props.myUserInfo.toJS()}/>
       </div>
+
       {
           props.search.length > 0 && (
             <div className  = "Category-results">
@@ -21,6 +22,10 @@ function Categories(props) {
               <h1 className = "Category-title">{props.search.length} coincidencia(s)</h1>
             </div>
           )
+        }
+        {
+          props.isLoading &&
+          <p>Buscando tus videos favoritos...</p>
         }
         {
           props.search.map( item => {
